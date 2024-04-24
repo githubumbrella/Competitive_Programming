@@ -1,0 +1,101 @@
+public class LL
+{
+    
+    class Node{
+		Node(int value){
+		this.data=value;
+      	}
+	    int data;
+	    Node next;
+	}
+	Node head;
+	public void addLast(int value){
+	    Node obj=new Node(value);
+	    Node temp=head;
+	    if(temp==null){
+	        head=obj;
+	        return;
+	    }
+	    while(temp.next!=null){
+	        temp=temp.next;
+	    }
+	    temp.next=obj;
+	    
+	}
+	public void addFirst(int value){
+	    Node obj=new Node(value);
+	    obj.next=head;
+	    head=obj;
+	}
+	public void addafter(int value,int x){
+	    Node obj=new Node(value);
+	    Node temp=head;
+	    while(temp.data!=x){
+	        temp=temp.next;
+	    }
+	    obj.next=temp.next;
+	    temp.next=obj;
+	}
+	public void removeLast(){
+	    Node temp=head;
+	    if(head==null){
+	        throw new RuntimeException("Linked list is empty");
+	    }else if(temp.next==null){
+	        head=null;
+	    }
+	    else{
+	        while(temp.next.next!=null){
+	        temp=temp.next;
+	        }
+	        temp.next=null;
+	    }
+	    
+	}
+	public void removeafter(int value){
+	    Node temp=head;
+	    if(temp==null){
+	        throw new RuntimeException("Linked list is empty");
+	    }
+	    while(temp.data!=value){
+	        temp=temp.next;
+	    }
+	    temp.next=temp.next.next;
+	    temp=temp.next.next;
+	}
+	public void removeFirst(){
+	    Node temp=head;
+	    if(temp==null){
+	        throw new RuntimeException("Linked list is empty");
+	    }else if(temp.next==null){
+	        head=null;
+	    }
+	    else{
+	        temp=temp.next;
+	        head=temp;
+	    }
+	}
+	public static void main(String[] args) {
+	    LL obj=new LL();
+	    obj.addLast(1);
+	    obj.addLast(2);
+	    obj.addLast(3);
+	    obj.addLast(4);
+	    obj.addFirst(5);
+	    obj.addafter(6,2);
+	    obj.removeFirst();
+	    obj.removeafter(2);
+	    obj.removeLast();
+	    obj.display();
+	    
+	}
+	public void display(){
+	    Node temp=head;
+	    if(temp==null){
+	        throw new RuntimeException("Priyanshi pagal hai");
+	    }
+	    while(temp!=null){
+	        System.out.println(temp.data);
+	        temp=temp.next;
+	    }
+	}
+}

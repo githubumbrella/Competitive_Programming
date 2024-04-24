@@ -1,0 +1,93 @@
+//permutataions
+class Solution {
+
+public List<List<Integer>> permute(int[] nums) {
+   List<List<Integer>> list = new ArrayList<>();
+   // Arrays.sort(nums); // not necessary
+   List<Integer> arraylist=new ArrayList<>();
+   backtrack(list, arraylist, nums);
+   return list;
+}
+
+private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums){
+   if(tempList.size() == nums.length){
+      list.add(new ArrayList<>(tempList));
+   } else{
+      for(int i = 0; i < nums.length; i++){ 
+         if(tempList.contains(nums[i])) continue; // element already exists, skip
+         tempList.add(nums[i]);
+         backtrack(list, tempList, nums);
+         tempList.remove(tempList.size() - 1);
+      }
+   }
+} 
+}
+
+//another approach using hashset 
+
+
+
+
+
+
+
+
+
+
+import java.util.Stack;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        Stack<Integer> temp=new Stack<>();
+        while(!stack.isEmpty()){
+            System.out.println(stack.peek());
+            temp.push(stack.pop());
+        }
+        while(!temp.isEmpty()){
+            stack.push(temp.pop());
+        }
+        System.out.println(stack);
+
+    }
+}
+
+//don't chnage the stack
+import java.util.Stack;
+
+public class Main {
+
+    public static void rev(Stack<Integer> stack) {
+        if (stack.isEmpty()) {
+            return;
+        }
+        int top = stack.pop();
+        System.out.println(top);
+        rev(stack);
+        //System.out.println(top);
+        stack.push(top);
+    }
+
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        
+
+        System.out.println("Stack elements in reverse order:");
+        rev(stack);
+        
+        System.out.println(stack);
+    }
+}
+
+//next greater element

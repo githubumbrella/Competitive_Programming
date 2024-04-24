@@ -1,0 +1,75 @@
+//jumps (combination)
+public class Main
+{
+	public static void main(String[] args) {
+	    int arr[]={1,2,3};
+	    int idx=0;
+		saarecomboprintkaro(5,idx,arr,"");
+	}
+	public static void saarecomboprintkaro(int n,int idx,int []arr,String path){
+	    if(n==0)
+	    {
+	        System.out.println(path);
+	        return;
+	    }
+	    if(n<0){
+	        return;
+	    }
+	    for(int i=idx;i<arr.length;i++){
+	        saarecomboprintkaro(n-arr[i],i,arr,path+arr[i]);
+	    }
+	}
+}
+
+\\rat in a maze
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter the rows and columns: ");
+        int row = s.nextInt();
+        int col = s.nextInt();
+        s.nextLine(); 
+        
+        char[][] maze = new char[row][col]; 
+        
+        System.out.println("Enter maze data row by row:");
+        for (int i = 0; i < row; i++) {
+            String line = s.nextLine();
+            for (int j = 0; j < col; j++) {
+                maze[i][j] = line.charAt(j);
+            }
+        }
+        
+        int[][] visited = new int[row][col];
+        maarkebhago(0, 0, maze, visited, "");
+    }
+
+    public static void maarkebhago(int r, int c, char[][] maze, int[][] visited, String str) {
+        if (r < 0 || c < 0 || r >= maze.length || c >= maze[0].length || visited[r][c] == 1 || maze[r][c] == 'X') {
+            return;
+        }
+        
+        if (r == maze.length - 1 && c == maze[0].length - 1) {
+            System.out.println("\nPath: " + str);
+            visited[r][c] = 1; 
+            for (int i = 0; i < visited.length; i++) {
+                for (int j = 0; j < visited[i].length; j++) {
+                    System.out.print(visited[i][j] + " ");
+                }
+                System.out.println();
+            }
+            visited[r][c] = 0;
+            return;
+        }
+        
+        visited[r][c] = 1;
+        maarkebhago(r-1, c, maze, visited, str + "U");
+        maarkebhago(r, c+1, maze, visited, str + "R");
+        maarkebhago(r+1, c, maze, visited, str + "D"); 
+        maarkebhago(r, c-1, maze, visited, str + "L");
+        visited[r][c] = 0; 
+    }
+}
+

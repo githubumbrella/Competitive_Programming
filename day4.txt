@@ -1,0 +1,66 @@
+//generate valid parentheses using recursion
+
+public class Main
+{
+	public static void main(String[] args) {
+		print(3,3,"");
+	}
+	public static void print(int op,int cl,String str){
+	    if(cl<op){
+	        return;
+	    }
+	    if(cl==op && op==0){
+	        System.out.println(str);
+	        return;
+	    }
+	    if(op<0){
+	        return;
+	    }
+	    print(op-1,cl,str+"(");
+	    print(op,cl-1,str+")");
+	    
+	}
+}
+
+
+//jumps 
+public class Main
+{
+	public static void main(String[] args) {
+		print(5,"");
+	}
+	public static void print(int n,String str){
+	    if(n==0)
+	    {
+	        System.out.println(str);
+	        return;
+	    }
+	    if(n<0){
+	        return;
+	    }
+	    print(n-1,str+"1");
+	    print(n-2,str+"2");
+	    print(n-3,str+"3");
+	}
+}
+
+
+//print the possible paths to reach to the destination row and column
+public class Main
+{
+	public static void main(String[] args) {
+		print(0,0,2,2,"");
+	}
+	public static void print(int r,int c,int dr,int dc,String str){
+	    if(r==dr && c==dc)
+	    {
+	        System.out.println(str);
+	        return;
+	    }
+	    if(r>dr || c>dc){
+	        return;
+	    }
+	    print(r,c+1,dr,dc,str+"R");
+	    print(r+1,c,dr,dc,str+"D");
+	}
+}

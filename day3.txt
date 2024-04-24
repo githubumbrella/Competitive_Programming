@@ -1,0 +1,146 @@
+//print 1234554321
+#include <iostream>
+#include <conio.h>
+void print(int s,int e);
+int main()
+{
+    print(1,5);
+}
+void print(int s,int e){
+
+  if(s>e){
+      return;
+  }
+  std::cout<<s<<std::endl;
+  print(s+1,e);
+  std::cout<<s<<std::endl;
+}
+
+//print 5432112345
+#include <iostream>
+#include <conio.h>
+void print(int s,int e);
+int main()
+{
+    print(5,1);
+}
+void print(int s,int e){
+
+  if(s<e){
+      return;
+  }
+  std::cout<<s<<std::endl;
+  print(s-1,e);
+  std::cout<<s<<std::endl;
+}
+
+//with one parameter
+#include <iostream>
+#include <conio.h>
+int e=5;
+void print(int s);
+int main()
+{
+    print(1);
+}
+void print(int s){
+ 
+  if(s>e){
+      return;
+  }
+  std::cout<<s<<std::endl;
+  print(s+1);
+  std::cout<<s<<std::endl;
+}
+
+//factorial of a number
+#include<stdio.h>
+long int multiplyNumbers(int n);
+int main() {
+    int n;
+    printf("Enter a positive integer: ");
+    scanf("%d",&n);
+    printf("Factorial of %d = %ld", n, multiplyNumbers(n));
+    return 0;
+}
+
+long int multiplyNumbers(int n) {
+    if (n>=1)
+        return n*multiplyNumbers(n-1);
+    else
+        return 1;
+}
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	    int ans= fibo(4);
+	    System.out.println(ans);
+	}
+	public static int fibo(int n){
+	    if(n<=1)
+	    return n;
+	    
+	    int sp1=fibo(n-1);
+	    int sp2=fibo(n-2);
+	    return sp1+sp2;
+	}
+}
+
+
+//output after tossing 3 coins
+public class Main
+{
+	public static void main(String[] args) {
+	    print(3,"");
+	}
+	public static void print(int coin,String str){
+	    if(coin==0)
+	    {
+	        System.out.println(str);
+	        return;
+	    }
+	    print(coin-1,str+"H");
+	    print(coin-1,str+"T");
+	}
+}
+
+//all subsequences of abc 
+public class Main
+{
+	public static void main(String[] args) {
+	    print(0,"abc","");
+	}
+	public static void print(int index,String given,String str ){
+	    if(index==given.length())
+	    {
+	        System.out.println("=>"+str);
+	        return;
+	    }
+	    print(index+1,given,str+given.charAt(index));
+	    print(index+1,given,str);
+	}
+}
+
+//all subsequences including ascii value
+public class Main
+{
+	public static void main(String[] args) {
+	    print(0,"ab","");
+	}
+	public static void print(int index,String given,String str ){
+	    if(index==given.length())
+	    {
+	        System.out.println("=>"+str);
+	        return;
+	    }
+	    print(index+1,given,str+given.charAt(index));
+	    print(index+1,given,str);
+	    print(index+1,given,str+(int)given.charAt(index));
+	}
+}
+
+
+
+
